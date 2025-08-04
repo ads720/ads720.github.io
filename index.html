@@ -174,7 +174,91 @@
       </div>
     </div>
   </section>
+  <!-- AOS CSS -->
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 
+<!-- Ad Card Start -->
+<div 
+  onclick="window.open('https://www.airbnb.com', '_blank')" 
+  data-aos="zoom-in"
+  style="
+    max-width: 900px;
+    margin: 60px auto;
+    border-radius: 24px;
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+    transition: transform 0.3s ease;"
+  onmouseover="this.style.transform='scale(1.02)'"
+  onmouseout="this.style.transform='scale(1)'"
+>
+
+  <!-- Background Image -->
+  <div style="
+    background-image: url('https://images.unsplash.com/photo-1503602642458-232111445657?auto=format&fit=crop&w=1200&q=80');
+    background-size: cover;
+    background-position: center;
+    height: 280px;
+    position: relative;
+  ">
+
+    <!-- Optional Dark Overlay -->
+    <div style="
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.4);
+    "></div>
+
+    <!-- Text Content -->
+    <div style="
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-align: center;
+      padding: 24px;
+    ">
+      <div style="
+        font-size: 12px;
+        background: rgba(255,255,255,0.2);
+        padding: 4px 12px;
+        border-radius: 20px;
+        margin-bottom: 10px;
+        backdrop-filter: blur(4px);
+      ">Sponsored</div>
+
+      <h2 style="font-size: 28px; margin: 0;">Find Your Next Obsession 💡</h2>
+      <p style="font-size: 16px; max-width: 600px; margin-top: 10px;">
+        Explore something new and unexpected. Limited-time experience you can't miss.
+      </p>
+      <button style="
+        margin-top: 20px;
+        background: #fff;
+        color: #000;
+        border: none;
+        font-size: 15px;
+        padding: 10px 22px;
+        border-radius: 30px;
+        font-weight: 500;
+        transition: all 0.3s ease;"
+      onmouseover="this.style.background='#eee'"
+      onmouseout="this.style.background='#fff'">
+        Visit Now →
+      </button>
+    </div>
+  </div>
+</div>
+<!-- Ad Card End -->
+
+<!-- AOS JS -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
   <!-- Free Fire Profile Section -->
   <section class="py-10 px-6" id="ff-profile">
     <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-10 gaming-bg" data-aos="fade-right">
