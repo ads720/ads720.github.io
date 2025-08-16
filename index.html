@@ -20,7 +20,6 @@
   overflow-x: hidden;
 }
 
-    
 .fb-section {
   background-color: transparent;
 }
@@ -157,6 +156,12 @@
   </div>
   <img src="maxresdefault.jpg" alt="Gameplay" class="rounded-xl w-64 h-64 object-cover mt-6 md:mt-0">
 </section>
+  <h1 class="h1">🔥 Free Fire Nickname Generator</h1>
+  <input type="text" id="nameInput" placeholder="Type your name..." oninput="generateAllNicknames()" />
+
+  <div class="preview-box" id="nicknameList">
+    <p>Type your name to see stylish nicknames!</p>
+  </div>
   <!-- About Section -->
   <section class="px-6 py-10 border-t" data-aos="fade-up"; style="background: black; color:white;">
     <div class="flex flex-wrap items-center justify-between">
@@ -473,7 +478,58 @@
       }
     });
   });
+const symbols = ["꧁", "༒", "✿", "𓆩", "☬", "★", "⫷", "⫸", "👑", "⚡", "@*@"  , "🔥"];
 
+    const styles = {
+      Normal: txt => txt,
+      Cursive: txt => mapFancy(txt, 119964),
+      Gothic: txt => mapFancy(txt, 120094),
+      Fancy: txt => mapFancy(txt, 119834),
+      Bold: txt => mapFancy(txt, 120276),
+      Wide: txt => txt.split('').join(' '),
+      Mirror: txt => txt.split('').reverse().join(''),
+    };
+
+    function mapFancy(text, base) {
+      return text.split('').map(c => {
+        const code = c.toLowerCase().charCodeAt(0);
+        if (code >= 97 && code <= 122) return String.fromCodePoint(base + (code - 97));
+        return c;
+      }).join('');
+    }
+
+    function getRandom(arr) {
+      return arr[Math.floor(Math.random() * arr.length)];
+    }
+
+    function generateAllNicknames() {
+      const name = document.getElementById("nameInput").value.trim();
+      const box = document.getElementById("nicknameList");
+
+      if (!name) {
+        box.innerHTML = `<p>Type your name to see stylish nicknames!</p>`;
+        return;
+      }
+
+      let resultHTML = "";
+
+      for (let styleName in styles) {
+        const styledName = styles[styleName](name);
+        const sym1 = getRandom(symbols);
+        const sym2 = getRandom(symbols);
+        const finalName = `${sym1} ${styledName} ${sym2}`;
+        
+        resultHTML += `<div class="nickname" onclick="copyText('${finalName}')">${finalName}<small>${styleName}</small></div>`;
+      }
+
+      box.innerHTML = resultHTML;
+    }
+
+    function copyText(txt) {
+      navigator.clipboard.writeText(txt).then(() => {
+        alert(`✅ Copied: ${txt}`);
+      });
+  }
 </script>
 </body>
 </html>
