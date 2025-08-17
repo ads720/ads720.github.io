@@ -127,7 +127,66 @@
   0%   { filter: hue-rotate(0deg); }
   100% { filter: hue-rotate(360deg); }
 }
-    
+    /*<head>  
+  <meta charset="UTF-8" />  
+  <title>Free Fire Stylish Nickname Generator</title>  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/> 
+    body {  
+      background: #0d0d0d;  
+      color: #fff;  
+      font-family: 'Segoe UI', sans-serif;  
+      padding: 20px;  
+      text-align: center;  
+    }*/
+
+    .h1 {  
+      color: red;  
+      margin-bottom: 10px;  
+    }  
+
+    input {  
+      padding: 12px;  
+      width: 90%;  
+      max-width: 400px;  
+      font-size: 18px;  
+      border-radius: 10px;  
+      border: none;  
+      margin-bottom: 20px;  
+    }  
+
+    .preview-box {  
+      max-width: 450px;  
+      margin: 0 auto;  
+      padding: 10px;  
+      background: #111;  
+      border-radius: 12px;  
+      border: 2px solid #00ffcc;  
+      max-height: 300px;  
+      overflow-y: auto;  
+    }  
+
+    .nickname {  
+      padding: 10px;  
+      margin: 8px 0;  
+      background: #1e1e1e;  
+      border-radius: 8px;  
+      cursor: pointer;  
+      transition: 0.3s;  
+    }  
+
+    .nickname:hover {  
+      background: #00ffcc;  
+      color: #000;  
+      font-weight: bold;  
+    }  
+
+    small {  
+      display: block;  
+      margin-top: 5px;  
+      font-size: 12px;  
+      color: #aaa;  
+    }  
+      
   </style>
 </head>
 
@@ -156,12 +215,15 @@
   </div>
   <img src="maxresdefault.jpg" alt="Gameplay" class="rounded-xl w-64 h-64 object-cover mt-6 md:mt-0">
 </section>
-  <h1 class="h1">🔥 Free Fire Nickname Generator</h1>
-  <input type="text" id="nameInput" placeholder="Type your name..." oninput="generateAllNicknames()" />
 
-  <div class="preview-box" id="nicknameList">
-    <p>Type your name to see stylish nicknames!</p>
-  </div>
+  <h1 class="h1">🦾 Free Fire Nickname Generator 👇</h1>  
+
+  <input type="text" id="nameInput" placeholder="Type your name..." oninput="generateAllNicknames()" />  
+
+  <div class="preview-box" id="nicknameList">  
+    <p>Type your name to see stylish nicknames!</p>  
+  </div>  
+
   <!-- About Section -->
   <section class="px-6 py-10 border-t" data-aos="fade-up"; style="background: black; color:white;">
     <div class="flex flex-wrap items-center justify-between">
@@ -478,58 +540,59 @@
       }
     });
   });
-const symbols = ["꧁", "༒", "✿", "𓆩", "☬", "★", "⫷", "⫸", "👑", "⚡", "@*@"  , "🔥"];
+  const symbols = ["꧁", "༒", "✿", "𓆩", "☬", "★", "⫷", "⫸", "👑", "⚡", "@*@" , "🔥"];  
 
-    const styles = {
-      Normal: txt => txt,
-      Cursive: txt => mapFancy(txt, 119964),
-      Gothic: txt => mapFancy(txt, 120094),
-      Fancy: txt => mapFancy(txt, 119834),
-      Bold: txt => mapFancy(txt, 120276),
-      Wide: txt => txt.split('').join(' '),
-      Mirror: txt => txt.split('').reverse().join(''),
-    };
+  const styles = {  
+    Normal: txt => txt,  
+    Cursive: txt => mapFancy(txt, 119964),  
+    Gothic: txt => mapFancy(txt, 120094),  
+    Fancy: txt => mapFancy(txt, 119834),  
+    Bold: txt => mapFancy(txt, 120276),  
+    Wide: txt => txt.split('').join(' '),  
+    Mirror: txt => txt.split('').reverse().join(''),  
+  };  
 
-    function mapFancy(text, base) {
-      return text.split('').map(c => {
-        const code = c.toLowerCase().charCodeAt(0);
-        if (code >= 97 && code <= 122) return String.fromCodePoint(base + (code - 97));
-        return c;
-      }).join('');
-    }
+  function mapFancy(text, base) {  
+    return text.split('').map(c => {  
+      const code = c.toLowerCase().charCodeAt(0);  
+      if (code >= 97 && code <= 122) return String.fromCodePoint(base + (code - 97));  
+      return c;  
+    }).join('');  
+  }  
 
-    function getRandom(arr) {
-      return arr[Math.floor(Math.random() * arr.length)];
-    }
+  function getRandom(arr) {  
+    return arr[Math.floor(Math.random() * arr.length)];  
+  }  
 
-    function generateAllNicknames() {
-      const name = document.getElementById("nameInput").value.trim();
-      const box = document.getElementById("nicknameList");
+  function generateAllNicknames() {  
+    const name = document.getElementById("nameInput").value.trim();  
+    const box = document.getElementById("nicknameList");  
 
-      if (!name) {
-        box.innerHTML = `<p>Type your name to see stylish nicknames!</p>`;
-        return;
-      }
+    if (!name) {  
+      box.innerHTML = `<p>Type your name to see stylish nicknames!</p>`;  
+      return;  
+    }  
 
-      let resultHTML = "";
+    let resultHTML = "";  
 
-      for (let styleName in styles) {
-        const styledName = styles[styleName](name);
-        const sym1 = getRandom(symbols);
-        const sym2 = getRandom(symbols);
-        const finalName = `${sym1} ${styledName} ${sym2}`;
-        
-        resultHTML += `<div class="nickname" onclick="copyText('${finalName}')">${finalName}<small>${styleName}</small></div>`;
-      }
+    for (let styleName in styles) {  
+      const styledName = styles[styleName](name);  
+      const sym1 = getRandom(symbols);  
+      const sym2 = getRandom(symbols);  
+      const finalName = `${sym1} ${styledName} ${sym2}`;  
 
-      box.innerHTML = resultHTML;
-    }
+      resultHTML += `<div class="nickname" onclick="copyText('${finalName}')">${finalName}<small>${styleName}</small></div>`;  
+    }  
 
-    function copyText(txt) {
-      navigator.clipboard.writeText(txt).then(() => {
-        alert(`✅ Copied: ${txt}`);
-      });
-  }
+    box.innerHTML = resultHTML;  
+  }  
+
+  function copyText(txt) {  
+    navigator.clipboard.writeText(txt).then(() => {  
+      alert(`✅ Copied: ${txt}`);  
+    });  
+  }  
+
 </script>
 </body>
 </html>
